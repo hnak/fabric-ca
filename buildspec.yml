@@ -21,7 +21,7 @@ phases:
     commands:
       - echo ECR_VERSION is $ECR_VERSION
       - docker push $ECR_VERSION
-      - printf '[{"name":"fabric-ca","imageUri":"%s"}]' $ECR_VERSION > imagedef.json
+      - printf '[{"name":"fabric-ca-server","imageUri":"%s"}]' $ECR_VERSION > imagedef.json
 artifacts:
   files:
     - imagedef.json
