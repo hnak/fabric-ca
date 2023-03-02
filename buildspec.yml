@@ -16,6 +16,7 @@ phases:
     commands:
       - make docker
       - ECR_VERSION="${IMAGE_URI}":"${IMAGE_TAG}"
+      - docker tag $ECR_VERSION
   post_build:
     commands:
       - docker push $ECR_VERSION
