@@ -32,11 +32,13 @@ ADD . /build/fabric-ca
 WORKDIR /build/fabric-ca
 
 RUN go install \
+    -buildvcs=false \
     -tags "${GO_TAGS}" \
     -ldflags "${GO_LDFLAGS}" \
     github.com/hyperledger/fabric-ca/cmd/fabric-ca-server
 
 RUN go install \
+    -buildvcs=false \
     -tags "${GO_TAGS}" \
     -ldflags "${GO_LDFLAGS}" \
     github.com/hyperledger/fabric-ca/cmd/fabric-ca-client
