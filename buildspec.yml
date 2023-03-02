@@ -5,7 +5,13 @@ phases:
   pre_build:
     commands:
       - IMAGE_URI=$AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME
+      # ECR へのログイン 
+      - echo Logging in to Amazon ECR...
       - aws ecr get-login-password | docker login --username AWS --password-stdin $IMAGE_URI
+      # Docker Hub へのログイン
+      - echo Logging in to Docker Hub...
+      - echo $DOCKERHUB_PASS | docker login -u $DOCKERHUB_USER --password-stdin
+ 
   build:
     commands:
       - make docker
