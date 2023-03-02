@@ -16,9 +16,10 @@ phases:
     commands:
       - make docker
       - ECR_VERSION="${IMAGE_URI}":"${IMAGE_TAG}"
-      - docker tag hyperledger/fabric-ca:${IMAGE_TAG} $ECR_VERSION
+      - docker tag hyperledger/fabric-ca:"${IMAGE_TAG}" $ECR_VERSION
   post_build:
     commands:
+      - echo ECR_VERSION is $ECR_VERSION
       - docker push $ECR_VERSION
       - printf '[{"name":"fabric-ca","imageUri":"%s"}]' $ECR_VERSION > imagedef.json
 artifacts:
